@@ -11,7 +11,8 @@ def prime_factors(number):
     output = []
     for i in range(2, number+1):
         if sito_eratostenesa[i]:
-            output.append(i)
+            if number%i == 0:
+                output.append(i)
     return output
 def test_type():
     with pytest.raises(TypeError):
@@ -27,3 +28,6 @@ def test_one():
 
 def test_two():
     assert prime_factors(2) == [2]
+
+def test_three():
+    assert prime_factors(3) == [3]
