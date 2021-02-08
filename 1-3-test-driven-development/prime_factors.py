@@ -13,6 +13,9 @@ def prime_factors(number):
         if sito_eratostenesa[i]:
             if number%i == 0:
                 output.append(i)
+                for j in range(i,number+1,i):
+                    sito_eratostenesa[j] = False
+
     return output
 def test_type():
     with pytest.raises(TypeError):
@@ -33,4 +36,4 @@ def test_three():
     assert prime_factors(3) == [3]
 
 def test_four():
-    assert prime_factors(4) == [4]
+    assert prime_factors(4) == [2]
