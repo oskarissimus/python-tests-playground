@@ -7,6 +7,12 @@ def prime_factors(number):
     if number <= 1:
         raise ValueError("only integers > 1 can be factorized")
 
+    sito_eratostenesa = [True] * (number+1)
+    output = []
+    for i in range(2, len(sito_eratostenesa)):
+        if sito_eratostenesa[i]:
+            output.append(i)
+    return output
 def test_type():
     with pytest.raises(TypeError):
         prime_factors(None)
