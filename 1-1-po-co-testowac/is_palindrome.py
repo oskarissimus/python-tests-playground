@@ -17,6 +17,8 @@ def is_palindrome(data):
 test_cases = {
     ''   : ValueError,
     10   : TypeError,
+    'a': True,
+    'aa': True,
     'aba': True,
     'abba': True,
     'abcba': True,
