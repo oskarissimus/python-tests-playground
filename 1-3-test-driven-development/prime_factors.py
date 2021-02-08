@@ -9,6 +9,8 @@ def prime_factors(number):
 
     sito_eratostenesa = [True] * (number+1)
     output = []
+    #i thought it was mem error, but before i got to mem problem, performance stopped me on 1bil
+    #i think it would be ok to check numbers onlu to sqrt(number)
     for i in range(2, number+1):
         if sito_eratostenesa[i]:
             if number%i == 0:
@@ -37,3 +39,24 @@ def test_three():
 
 def test_four():
     assert prime_factors(4) == [2]
+
+def test_five():
+    assert prime_factors(5) == [5]
+
+def test_six():
+    assert prime_factors(6) == [2,3]
+
+def test_yellow():
+    assert prime_factors(2137) == [2137]
+
+def test_if_i_got_enough_mem_for_10k():
+    assert prime_factors(10000) == [2,5]
+
+def test_if_i_got_enough_mem_for_1m():
+    assert prime_factors(10**6) == [2,5]
+
+def test_if_i_got_enough_mem_for_10m():
+    assert prime_factors(10**7) == [2,5]
+
+def test_some_crazy_number():
+    assert prime_factors(3958159172) == [2, 11, 2347, 38329]
