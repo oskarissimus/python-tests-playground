@@ -64,5 +64,8 @@ def test_if_i_got_enough_mem_for_1m():
 def test_if_i_got_enough_mem_for_10m():
     assert prime_factors(10**7) == [2,5]
 
+def test_if_i_got_enough_mem_for_100m():
+    assert prime_factors(10**8) == [2,5]
+
 def test_some_crazy_number():
     assert prime_factors(3958159172) == [2, 11, 2347, 38329]
