@@ -1,5 +1,6 @@
 import pytest
- 
+import math
+
 def prime_factors(number):
     if type(number) != int:
         raise TypeError("only integers > 1 can be factorized")
@@ -10,15 +11,20 @@ def prime_factors(number):
     sito_eratostenesa = [True] * (number+1)
     output = []
     #i thought it was mem error, but before i got to mem problem, performance stopped me on 1bil
-    #i think it would be ok to check numbers onlu to sqrt(number)
-    for i in range(2, number+1):
+    #i think it would be ok to check numbers only to sqrt(number)
+    for i in range(2, int(math.sqrt(number))+2):
         if sito_eratostenesa[i]:
             if number%i == 0:
                 output.append(i)
-                for j in range(i,number+1,i):
+                for j in range(i,len(sito_eratostenesa),i):
                     sito_eratostenesa[j] = False
 
-    return output
+    #number is prime
+    if output == []:
+        return [number]
+    else:
+        return output
+
 def test_type():
     with pytest.raises(TypeError):
         prime_factors(None)
