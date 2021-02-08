@@ -10,5 +10,6 @@ test_cases = {
 }
 
 for board, expectation in test_cases.items():
-    assert tic_tac_toe_winner(board) == expectation, \
+    response = tic_tac_toe_winner(board)
+    assert response == expectation, \
         f'Expected {expectation!r} for {board!r} got {response!r}'
