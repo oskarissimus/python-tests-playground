@@ -31,3 +31,6 @@ def test_two():
 
 def test_three():
     assert prime_factors(3) == [3]
+
+def test_four():
+    assert prime_factors(4) == [4]
