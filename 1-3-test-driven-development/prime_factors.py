@@ -2,10 +2,10 @@ import pytest
  
 def prime_factors(number):
     if type(number) != int:
-        raise TypeError("only positive integers can be factorized")
+        raise TypeError("only integers > 1 can be factorized")
 
-    if number <= 0:
-        raise ValueError("only positive integers can be factorized")
+    if number <= 1:
+        raise ValueError("only integers > 1 can be factorized")
 
 def test_type():
     with pytest.raises(TypeError):
@@ -14,3 +14,7 @@ def test_type():
 def test_range():
     with pytest.raises(ValueError):
         prime_factors(-10)
+
+def test_one():
+    with pytest.raises(ValueError):
+        prime_factors(1)
