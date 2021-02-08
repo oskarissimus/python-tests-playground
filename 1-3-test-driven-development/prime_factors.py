@@ -18,3 +18,6 @@ def test_range():
 def test_one():
     with pytest.raises(ValueError):
         prime_factors(1)
+
+def test_two():
+    assert prime_factors(2) == [2]
