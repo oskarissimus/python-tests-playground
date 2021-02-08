@@ -9,7 +9,7 @@ def prime_factors(number):
 
     sito_eratostenesa = [True] * (number+1)
     output = []
-    for i in range(2, len(sito_eratostenesa)):
+    for i in range(2, number+1):
         if sito_eratostenesa[i]:
             output.append(i)
     return output
