@@ -1,11 +1,14 @@
 def is_palindrome(data):
-    if type(data) != str:
+    if not isinstance(data, str) and not isinstance(data, int):
         raise TypeError()
 
     if not data:
         raise ValueError()
 
-    data = "".join([x.lower() for x in data if x.isalpha()])
+    if isinstance(data, int):
+        data = str(data)
+
+    data = "".join([x.lower() for x in data if x.isalpha() or x.isdigit()])
     
     return data == data[::-1]
 
@@ -20,7 +23,9 @@ test_cases = {
     'abcba': True,
     'abca': False,
     'Sore was I ere I saw Eros.': True,
-    '"Stop!" nine myriad murmur. "Put up rum, rum, dairymen, in pots."': True
+    '"Stop!" nine myriad murmur. "Put up rum, rum, dairymen, in pots."': True,
+    '1a1': True,
+    '2137': False
 }
 
 for data, expectation in test_cases.items():
