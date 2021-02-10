@@ -11,4 +11,4 @@ python:
 # command to install dependencies
 # command to run tests
 script:
-  - python3 is_palindrome.py
+  - python3 1-1-po-co-testowac/is_palindrome.py
