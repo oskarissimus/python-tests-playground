@@ -23,6 +23,8 @@ test_cases = {
     'abba': True,
     'abcba': True,
     'abca': False,
+    'Sore was I ere I saw Eros.': True,
+    
 }
 
 for data, expectation in test_cases.items():
