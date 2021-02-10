@@ -2,9 +2,11 @@ def is_palindrome(data):
     if type(data) != str:
         raise TypeError()
 
-    if data == '':
+    if not data:
         raise ValueError()
 
+    data = "".join([x.lower() for x in data if x.isalpha()])
+    
     left = 0
     right = len(data)-1
     while left < right:
@@ -24,7 +26,7 @@ test_cases = {
     'abcba': True,
     'abca': False,
     'Sore was I ere I saw Eros.': True,
-    
+    '"Stop!" nine myriad murmur. "Put up rum, rum, dairymen, in pots."': True
 }
 
 for data, expectation in test_cases.items():
