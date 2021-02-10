@@ -7,14 +7,7 @@ def is_palindrome(data):
 
     data = "".join([x.lower() for x in data if x.isalpha()])
     
-    left = 0
-    right = len(data)-1
-    while left < right:
-        if data[left] != data[right]:
-            return False
-        left  += 1
-        right -= 1
-    return True
+    return data == data[::-1]
 
 test_cases = {
     ''   : ValueError,
