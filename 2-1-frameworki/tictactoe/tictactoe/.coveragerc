@@ -1,0 +1,11 @@
+[coverage:run]
+include = core.py
+omit = test_core.py
+
+[coverage:report]
+show_missing = true
+exclude_lines =
+    def __repr__
+
+[coverage:html]
+directory = docs/coverage
