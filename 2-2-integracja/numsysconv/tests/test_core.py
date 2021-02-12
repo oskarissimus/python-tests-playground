@@ -58,3 +58,16 @@ def test_rejection_of_pointless_convertion_rom_to_rom():
         convert_numeral_system(source_numeral_system='roman',
                                 target_numeral_system='roman',
                                 number='I')
+
+def test_rejection_of_non_string_roman_number():
+    with pytest.raises(TypeError):
+        convert_numeral_system(source_numeral_system='roman',
+                        target_numeral_system='decimal',
+                        number=1)
+
+def test_rejection_of_non_int_decimal_number():
+    with pytest.raises(TypeError):
+        convert_numeral_system(source_numeral_system='decimal',
+                        target_numeral_system='roman',
+                        number='I')
+                        
