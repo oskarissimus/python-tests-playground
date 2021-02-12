@@ -1,3 +1,5 @@
-1-3-test-driven-development/.cache/v/cache/lastfailed
-1-3-test-driven-development/__pycache__/prime_factors.cpython-36-PYTEST.pyc
 .vscode/settings.json
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
