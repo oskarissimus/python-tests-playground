@@ -46,3 +46,15 @@ class TestNumeralSystemNamingValidation:
                                    target_numeral_system='deci=====mal',
                                    number='I')
 
+
+def test_rejection_of_pointless_convertion_dec_to_dec():
+    with pytest.raises(ValueError):
+        convert_numeral_system(source_numeral_system='decimal',
+                                target_numeral_system='decimal',
+                                number=1)
+
+def test_rejection_of_pointless_convertion_rom_to_rom():
+    with pytest.raises(ValueError):
+        convert_numeral_system(source_numeral_system='roman',
+                                target_numeral_system='roman',
+                                number='I')
