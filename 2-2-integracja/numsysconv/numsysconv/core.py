@@ -49,6 +49,8 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
     decimal_values_of_legal_roman_symbols = list(decimal_to_roman_mapping.keys())
 
     if source_numeral_system == 'decimal':
+        if number < 1:
+            raise ValueError('cant convert non-positive number to roman')
         roman_number = ''
         while number > 0:
             biggest_decimal_value_of_legal_roman_symbol_lower_than_number =\
@@ -83,4 +85,5 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
             return decimal_number
         else:
             raise ValueError('wrong format of number')
+
 
