@@ -7,6 +7,8 @@ python:
   - "3.9-dev"  # 3.9 development branch
   - "nightly"  # nightly build
 # command to install dependencies
+install:
+  - pip install -e 2-2-integracja/numsysconv/
 # command to run tests
 script:
   - python3 1-1-po-co-testowac/is_palindrome.py
