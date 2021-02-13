@@ -57,3 +57,26 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
             number -= biggest_decimal_value_of_legal_roman_symbol_lower_than_number
         return roman_number
 
+    elif source_numeral_system == 'roman':
+        decimal_number = 0
+        i = 0
+        while i < len(number):
+            roman_symbol = number[i]
+            #checking if order of symbol is descending
+            if i+1 < len(number):
+                if roman_to_decimal_mapping[number[i]] > roman_to_decimal_mapping[number[i+1]]:
+                    #order is ok
+                    decimal_number += roman_to_decimal_mapping[number[i]]
+                    i += 1
+                else:
+                    #order is bad, but it could be one of double-char symbols
+                    if number[i:i+1] in roman_to_decimal_mapping.keys():
+                        number += roman_to_decimal_mapping[number[i:i+1]]
+                        i += 2
+                    else:
+                        raise ValueError('order of roman symbols in number must be descending')
+            else:
+                decimal_number += roman_to_decimal_mapping[number[i]]
+                i+=1
+        return decimal_number
+

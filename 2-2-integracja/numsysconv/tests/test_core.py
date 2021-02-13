@@ -108,4 +108,4 @@ class TestConvertionsToRoman:
 class TestConvertionsToDecimal:
 
     def test_proper_convertion_of_XVI_to_decimal(self):
-        assert convert_numeral_system('roman','decimal','XVI') == 19
+        assert convert_numeral_system('roman','decimal','XVI') == 16
