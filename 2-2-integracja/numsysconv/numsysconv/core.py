@@ -2,11 +2,12 @@ def convert_numeral_system(source_numeral_system,
                            target_numeral_system,
                            number):
     #validating input
-    if source_numeral_system not in ['decimal','roman']:
-        raise ValueError('source_numeral_system has to be "decimal" or "roman"')
+    legal_numeral_systems = ('decimal','roman')
+    if source_numeral_system not in legal_numeral_systems:
+        raise ValueError(f'source_numeral_system has to be one of {legal_numeral_systems}')
 
-    if target_numeral_system not in ['decimal','roman']:
-        raise ValueError('target_numeral_system has to be "decimal" or "roman"')
+    if target_numeral_system not in legal_numeral_systems:
+        raise ValueError(f'target_numeral_system has to be one of {legal_numeral_systems}')
 
     if source_numeral_system == target_numeral_system:
         raise ValueError('target_numeral_system and source_numeral_system must differ')
