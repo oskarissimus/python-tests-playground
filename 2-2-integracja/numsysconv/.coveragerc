@@ -1,6 +1,6 @@
 [coverage:run]
 include = numsysconv/core.py
-omit = *tests*
+omit = tests*
 
 [coverage:report]
 show_missing = true
