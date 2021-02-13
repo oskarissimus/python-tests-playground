@@ -70,4 +70,7 @@ def test_rejection_of_non_int_decimal_number():
         convert_numeral_system(source_numeral_system='decimal',
                         target_numeral_system='roman',
                         number='I')
-                        
+
+def test_proper_convertion_of_16_to_roman():
+    assert convert_numeral_system('decimal','roman',16) == 'XVI'
+

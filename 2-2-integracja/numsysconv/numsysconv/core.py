@@ -25,4 +25,33 @@ def convert_numeral_system(source_numeral_system,
     
     if number == 'I':
         return 1
-    
+
+    legal_roman_symbols = 'IVXLCDM'
+
+    roman_to_decimal_mapping = {
+        'I':  1,
+        'IV': 4,
+        'V':  5,
+        'IX': 9,
+        'X':  10,
+        'XL': 40,
+        'L':  50,
+        'XC': 90,
+        'C':  100,
+        'CD': 400,
+        'D':  500,
+        'CM': 900,
+        'M':  1000,
+    }
+    #swapping mapping
+    decimal_to_roman_mapping = {value:key for key, value in roman_to_decimal_mapping.items()}
+    decimal_values_of_legal_roman_symbols = list(decimal_to_roman_mapping.keys())
+
+    if source_numeral_system == 'decimal':
+        roman_number = ''
+        while number > 0:
+            biggest_decimal_value_of_legal_roman_symbol_lower_than_number =\
+              max([n for n in decimal_values_of_legal_roman_symbols if n<=number])
+            roman_number += decimal_to_roman_mapping[biggest_decimal_value_of_legal_roman_symbol_lower_than_number]
+            number -= biggest_decimal_value_of_legal_roman_symbol_lower_than_number
+        return roman_number
