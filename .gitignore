@@ -1,5 +1,6 @@
 .vscode/settings.json
 *.coverage
+2-2-integracja/numsysconv/docs
 
 #https://github.com/github/gitignore/blob/master/Python.gitignore
 # Byte-compiled / optimized / DLL files
