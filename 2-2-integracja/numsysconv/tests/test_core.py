@@ -112,3 +112,46 @@ class TestConvertionsToDecimal:
 
     def test_proper_convertion_of_XIX_to_decimal(self):
         assert convert_numeral_system('roman','decimal','XIX') == 19
+
+    def test_proper_convertion_of_XLIX_to_decimal(self):
+        assert convert_numeral_system('roman','decimal','XLIX') == 49
+
+class TestRomanNumberValidity:
+
+    def test_1_attempt_of_converting_invalid_roman_16_to_decimal(self):
+        with pytest.raises(ValueError):
+            assert convert_numeral_system('roman','decimal','XIIIIII') 
+
+    def test_2_attempt_of_converting_invalid_roman_16_to_decimal(self):
+        with pytest.raises(ValueError):
+            assert convert_numeral_system('roman','decimal','IIIIIIIIIIIIIIII') 
+
+    def test_3_attempt_of_converting_invalid_roman_16_to_decimal(self):
+        with pytest.raises(ValueError):
+            assert convert_numeral_system('roman','decimal','VVVI') 
+
+    def test_1_attempt_of_converting_invalid_roman_49_to_decimal(self):
+        with pytest.raises(ValueError):
+            assert convert_numeral_system('roman','decimal','IL') 
+
+    def test_2_attempt_of_converting_invalid_roman_49_to_decimal(self):
+        with pytest.raises(ValueError):
+            assert convert_numeral_system('roman','decimal','XXXXIIIIIIIII') 
+
+    def test_3_attempt_of_converting_invalid_roman_49_to_decimal(self):
+        with pytest.raises(ValueError):
+            assert convert_numeral_system('roman','decimal','XXXXVIIII') 
+
+    def test_4_attempt_of_converting_invalid_roman_49_to_decimal(self):
+        with pytest.raises(ValueError):
+            assert convert_numeral_system('roman','decimal','XXXXIX') 
+
+    def test_5_attempt_of_converting_invalid_roman_49_to_decimal(self):
+        with pytest.raises(ValueError):
+            assert convert_numeral_system('roman','decimal','XLIIIIIIIII') 
+
+    def test_6_attempt_of_converting_invalid_roman_49_to_decimal(self):
+        with pytest.raises(ValueError):
+            assert convert_numeral_system('roman','decimal','XLVIIII') 
+
+

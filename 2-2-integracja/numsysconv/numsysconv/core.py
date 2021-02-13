@@ -64,7 +64,7 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
             roman_symbol = number[i]
             #checking if order of symbol is descending
             if i+1 < len(number):
-                if roman_to_decimal_mapping[number[i]] > roman_to_decimal_mapping[number[i+1]]:
+                if roman_to_decimal_mapping[number[i]] >= roman_to_decimal_mapping[number[i+1]]:
                     #order is ok
                     decimal_number += roman_to_decimal_mapping[number[i]]
                     i += 1
@@ -79,5 +79,8 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
             else:
                 decimal_number += roman_to_decimal_mapping[number[i]]
                 i+=1
-        return decimal_number
+        if number == convert_numeral_system('decimal','roman',decimal_number):
+            return decimal_number
+        else:
+            raise ValueError('wrong format of number')
 
