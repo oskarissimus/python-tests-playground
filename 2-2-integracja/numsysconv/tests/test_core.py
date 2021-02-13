@@ -74,3 +74,17 @@ def test_rejection_of_non_int_decimal_number():
 def test_proper_convertion_of_16_to_roman():
     assert convert_numeral_system('decimal','roman',16) == 'XVI'
 
+def test_1_improper_convertion_of_16_to_roman():
+    assert convert_numeral_system('decimal','roman',16) != 'XIIIIII'
+
+def test_2_improper_convertion_of_16_to_roman():
+    assert convert_numeral_system('decimal','roman',16) != 'IIIIIIIIIIIIIIII'
+
+def test_3_improper_convertion_of_16_to_roman():
+    assert convert_numeral_system('decimal','roman',16) != 'VVVI'
+
+def test_proper_convertion_of_4_to_roman():
+    assert convert_numeral_system('decimal','roman',4) == 'IV'
+
+def test_improper_convertion_of_4_to_roman():
+    assert convert_numeral_system('decimal','roman',4) != 'IIII'

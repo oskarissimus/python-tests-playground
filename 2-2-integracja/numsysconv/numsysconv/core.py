@@ -1,6 +1,7 @@
-def convert_numeral_system(source_numeral_system,
-                           target_numeral_system,
-                           number):
+from typing import Literal, Union
+def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
+                           target_numeral_system: Literal['decimal','roman'],
+                           number: Union[str,int]) -> Union[str,int]:
     #validating input
     legal_numeral_systems = ('decimal','roman')
     if source_numeral_system not in legal_numeral_systems:
