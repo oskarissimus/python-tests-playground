@@ -154,4 +154,6 @@ class TestRomanNumberValidity:
         with pytest.raises(ValueError):
             assert convert_numeral_system('roman','decimal','XLVIIII') 
 
-
+def test_value_range_of_convertion_to_roman():
+    with pytest.raises(ValueError):
+        assert convert_numeral_system('decimal','roman',-10) 
