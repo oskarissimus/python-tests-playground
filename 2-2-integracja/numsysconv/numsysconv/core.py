@@ -27,8 +27,6 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
     if number == 'I':
         return 1
 
-    legal_roman_symbols = 'IVXLCDM'
-
     roman_to_decimal_mapping = {
         'I':  1,
         'IV': 4,
@@ -60,6 +58,13 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
         return roman_number
 
     elif source_numeral_system == 'roman':
+
+        # validating number
+        legal_roman_symbols = 'IVXLCDM'
+        for c in number:
+            if c not in legal_roman_symbols:
+                raise ValueError(f'number in roman numeral system must consists of "{legal_roman_symbols}"')
+
         decimal_number = 0
         i = 0
         while i < len(number):
