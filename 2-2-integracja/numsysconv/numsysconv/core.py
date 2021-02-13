@@ -70,8 +70,9 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
                     i += 1
                 else:
                     #order is bad, but it could be one of double-char symbols
-                    if number[i:i+1] in roman_to_decimal_mapping.keys():
-                        number += roman_to_decimal_mapping[number[i:i+1]]
+                    double_char_roman_symbol = number[i:i+2]
+                    if double_char_roman_symbol in roman_to_decimal_mapping.keys():
+                        decimal_number += roman_to_decimal_mapping[double_char_roman_symbol]
                         i += 2
                     else:
                         raise ValueError('order of roman symbols in number must be descending')
