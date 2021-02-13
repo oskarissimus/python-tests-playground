@@ -24,4 +24,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+2-1-frameworki/tictactoe/.coverage
+2-1-frameworki/tictactoe/tictactoe/docs
 MANIFEST
+
