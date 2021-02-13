@@ -56,3 +56,4 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
             roman_number += decimal_to_roman_mapping[biggest_decimal_value_of_legal_roman_symbol_lower_than_number]
             number -= biggest_decimal_value_of_legal_roman_symbol_lower_than_number
         return roman_number
+
