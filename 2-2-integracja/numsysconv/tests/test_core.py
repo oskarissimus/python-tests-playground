@@ -1,15 +1,6 @@
 import pytest
 from numsysconv.core import convert_numeral_system
 
-def test_convertion_of_one_from_decimal_to_roman():
-    assert convert_numeral_system(source_numeral_system='decimal',
-                                  target_numeral_system='roman',
-                                  number=1) == 'I'
-
-def test_convertion_of_one_from_roman_to_decimal():
-    assert convert_numeral_system(source_numeral_system='roman',
-                                  target_numeral_system='decimal',
-                                  number='I') == 1
 
 class TestNumeralSystemNamingValidation:
 
@@ -71,88 +62,56 @@ def test_rejection_of_non_int_decimal_number():
                         target_numeral_system='roman',
                         number='I')
 
-class TestConvertionsToRoman:
-    def test_proper_convertion_of_16_to_roman(self):
-        assert convert_numeral_system('decimal','roman',16) == 'XVI'
 
-    def test_1_improper_convertion_of_16_to_roman(self):
-        assert convert_numeral_system('decimal','roman',16) != 'XIIIIII'
+@pytest.mark.parametrize("test_input,expected", [
+    (1, 'I'),
+    (4, 'IV'),
+    (16, 'XVI'),
+    (19, 'XIX'),
+    (1234, 'MCCXXXIV'),
+    (321, 'CCCXXI'),
+    (451, 'CDLI'),
+    (1666, 'MDCLXVI'),
+    (3999, 'MMMCMXCIX'),
+    (2000, 'MM'),
+    (3800, 'MMMDCCC'),
+    ])
+def test_convertions_to_roman(test_input, expected):
+    assert convert_numeral_system('decimal','roman',test_input) == expected
 
-    def test_2_improper_convertion_of_16_to_roman(self):
-        assert convert_numeral_system('decimal','roman',16) != 'IIIIIIIIIIIIIIII'
 
-    def test_3_improper_convertion_of_16_to_roman(self):
-        assert convert_numeral_system('decimal','roman',16) != 'VVVI'
+@pytest.mark.parametrize("expected,test_input", [
+    (1, 'I'),
+    (4, 'IV'),
+    (16, 'XVI'),
+    (19, 'XIX'),
+    (1234, 'MCCXXXIV'),
+    (321, 'CCCXXI'),
+    (451, 'CDLI'),
+    (1666, 'MDCLXVI'),
+    (3999, 'MMMCMXCIX'),
+    (2000, 'MM'),
+    (3800, 'MMMDCCC'),
+    ])
+def test_convertions_to_decimal(expected, test_input):
+    assert convert_numeral_system('roman','decimal',test_input) == expected
 
-    def test_proper_convertion_of_4_to_roman(self):
-        assert convert_numeral_system('decimal','roman',4) == 'IV'
 
-    def test_improper_convertion_of_4_to_roman(self):
-        assert convert_numeral_system('decimal','roman',4) != 'IIII'
-
-    def test_proper_convertion_of_19_to_roman(self):
-        assert convert_numeral_system('decimal','roman',19) == 'XIX'
-
-    def test_1_improper_convertion_of_19_to_roman(self):
-        assert convert_numeral_system('decimal','roman',19) != 'IXX'
-
-    def test_2_improper_convertion_of_19_to_roman(self):
-        assert convert_numeral_system('decimal','roman',19) != 'XVIV'
-
-    def test_4_improper_convertion_of_19_to_roman(self):
-        assert convert_numeral_system('decimal','roman',19) != 'XIIIIIIIII'
-
-    def test_5_improper_convertion_of_19_to_roman(self):
-        assert convert_numeral_system('decimal','roman',19) != 'XVIIII'
-
-class TestConvertionsToDecimal:
-
-    def test_proper_convertion_of_XVI_to_decimal(self):
-        assert convert_numeral_system('roman','decimal','XVI') == 16
-
-    def test_proper_convertion_of_XIX_to_decimal(self):
-        assert convert_numeral_system('roman','decimal','XIX') == 19
-
-    def test_proper_convertion_of_XLIX_to_decimal(self):
-        assert convert_numeral_system('roman','decimal','XLIX') == 49
-
-class TestRomanNumberValidity:
-
-    def test_1_attempt_of_converting_invalid_roman_16_to_decimal(self):
+@pytest.mark.parametrize("test_input", [
+    'XIIIIII',
+    'IIIIIIIIIIIIIIII',
+    'VVVI',
+    'XXXXIIIIIIIII',
+    'IL',
+    'XXXXVIIII',
+    'XXXXIX',
+    'XLIIIIIIIII',
+    'XLVIIII',
+    ])
+def test_if_invalid_roman_number_raise_value_error(test_input):
         with pytest.raises(ValueError):
-            assert convert_numeral_system('roman','decimal','XIIIIII') 
+            assert convert_numeral_system('roman','decimal',test_input)
 
-    def test_2_attempt_of_converting_invalid_roman_16_to_decimal(self):
-        with pytest.raises(ValueError):
-            assert convert_numeral_system('roman','decimal','IIIIIIIIIIIIIIII') 
-
-    def test_3_attempt_of_converting_invalid_roman_16_to_decimal(self):
-        with pytest.raises(ValueError):
-            assert convert_numeral_system('roman','decimal','VVVI') 
-
-    def test_1_attempt_of_converting_invalid_roman_49_to_decimal(self):
-        with pytest.raises(ValueError):
-            assert convert_numeral_system('roman','decimal','IL') 
-
-    def test_2_attempt_of_converting_invalid_roman_49_to_decimal(self):
-        with pytest.raises(ValueError):
-            assert convert_numeral_system('roman','decimal','XXXXIIIIIIIII') 
-
-    def test_3_attempt_of_converting_invalid_roman_49_to_decimal(self):
-        with pytest.raises(ValueError):
-            assert convert_numeral_system('roman','decimal','XXXXVIIII') 
-
-    def test_4_attempt_of_converting_invalid_roman_49_to_decimal(self):
-        with pytest.raises(ValueError):
-            assert convert_numeral_system('roman','decimal','XXXXIX') 
-
-    def test_5_attempt_of_converting_invalid_roman_49_to_decimal(self):
-        with pytest.raises(ValueError):
-            assert convert_numeral_system('roman','decimal','XLIIIIIIIII') 
-
-    def test_6_attempt_of_converting_invalid_roman_49_to_decimal(self):
-        with pytest.raises(ValueError):
-            assert convert_numeral_system('roman','decimal','XLVIIII') 
 
 def test_value_range_of_convertion_to_roman():
     with pytest.raises(ValueError):
