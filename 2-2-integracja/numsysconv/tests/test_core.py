@@ -121,3 +121,7 @@ def test_rejection_of_attempt_to_convert_some_stupid_string():
     with pytest.raises(ValueError):
         assert convert_numeral_system('roman','decimal','somestupudstring')
 
+def test_two_way_convertion_from_1_to_3999():
+    for n in range(1,3999):
+        roman_n = convert_numeral_system('decimal','roman',n)
+        assert n == convert_numeral_system('roman', 'decimal',roman_n)
