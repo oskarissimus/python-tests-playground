@@ -1,6 +1,6 @@
 from typing import Literal, Union
 
-class converter:
+class Converter:
     def __init__(self):
         self.roman_to_decimal_mapping = {
             'I':  1,
@@ -19,7 +19,7 @@ class converter:
         }
         #swapping mapping
         self.decimal_to_roman_mapping = {value:key for key, value in self.roman_to_decimal_mapping.items()}
-        self.decimal_values_of_legal_roman_symbols = list(self.decimal_to_roman_mapping.keys())
+        self.decimal_values_of_legal_roman_symbols = list(self.decimal_to_roman_mapping)
 
 
     def convert_decimal_to_roman(self, number: int):
@@ -89,7 +89,7 @@ def convert_numeral_system(source_numeral_system: Literal['decimal','roman'],
         raise TypeError('converting from roman numeral system - number must be string')
 
 
-    c = converter()
+    c = Converter()
 
     if source_numeral_system == 'decimal':
         return c.convert_decimal_to_roman(number)

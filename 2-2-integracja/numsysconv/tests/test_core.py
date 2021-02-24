@@ -4,12 +4,12 @@ from numsysconv.core import convert_numeral_system
 
 class TestNumeralSystemNamingValidation:
 
-    def test_source_numeral_system_naming_validation_accept_decimal(self):
+    def test_numeral_system_naming_validation_accept_decimal_roman(self):
         assert convert_numeral_system(source_numeral_system='decimal',
                                       target_numeral_system='roman',
                                       number=1) == 'I'
 
-    def test_source_numeral_system_naming_validation_accept_roman(self):
+    def test_numeral_system_naming_validation_accept_roman_decimal(self):
         assert convert_numeral_system(source_numeral_system='roman',
                                       target_numeral_system='decimal',
                                       number='I') == 1
@@ -20,16 +20,6 @@ class TestNumeralSystemNamingValidation:
                                    target_numeral_system='roman',
                                    number=1)
 
-
-    def test_target_numeral_system_naming_validation_accept_decimal(self):
-        assert convert_numeral_system(source_numeral_system='decimal',
-                                      target_numeral_system='roman',
-                                      number=1) == 'I'
-
-    def test_target_numeral_system_naming_validation_accept_roman(self):
-        assert convert_numeral_system(source_numeral_system='roman',
-                                      target_numeral_system='decimal',
-                                      number='I') == 1
 
     def test_target_numeral_system_naming_validation_reject_bad_name(self):
         with pytest.raises(ValueError):
