@@ -1,5 +1,6 @@
 .vscode/settings.json
-2-1-frameworki/tictactoe/tictactoe/.coverage
+*.coverage
+2-2-integracja/numsysconv/docs
 
 #https://github.com/github/gitignore/blob/master/Python.gitignore
 # Byte-compiled / optimized / DLL files
